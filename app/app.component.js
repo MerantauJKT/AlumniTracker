@@ -8,18 +8,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
+var RoleComponent = (function () {
+    function RoleComponent() {
+    }
+    return RoleComponent;
+}());
+exports.RoleComponent = RoleComponent;
+var ROLES = [
+    { id: 1, name: 'Admin' },
+    { id: 2, name: 'User' },
+];
 var AppComponent = (function () {
     function AppComponent() {
+        this.title = 'Alumni Tracker';
+        this.roles = ROLES;
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: '<h1>My First Angular App</h1>'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
+    AppComponent.prototype.onSelect = function (role) {
+        console.log("Click", role);
+    };
     return AppComponent;
 }());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'my-app',
+        template: "\n  <h1>{{title}}</h1>\n  <h3>List Roles</h3>\n  <ul>\n  <li *ngFor=\"let role of roles\" (click)=\"onSelect(role)\">{{role.id}} - {{role.name}}</li>\n  </ul>\n  "
+    }),
+    __metadata("design:paramtypes", [])
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
