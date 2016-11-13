@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-
-export class RoleComponent {
-    id: number;
-    name: string;
-    icon: string;
-    desc: string;
-    status: string;
-}
+import { RoleComponent } from './role';
 
 const ROLES: RoleComponent[] = [
     { id: 1, name: 'Admin', icon: 'spy', desc: 'Description admin here', status: 'green' },
@@ -35,21 +28,7 @@ const ROLES: RoleComponent[] = [
       </div>
     </div>
   </div>
-
-  <div *ngIf="selectedRole">
-    <h3>Details</h3>
-    <form class="ui form">
-      <div class="field">
-      <label>ID: </label>
-      <input type="text" [(ngModel)]="selectedRole.id" name="id" placeholder="ID"/>
-      </div>
-      <div class="field">
-      <label>Name: </label>
-      <input type="text" [(ngModel)]="selectedRole.name" name="name" placeholder="Name"/>
-      </div>
-    </form>
-  </div>
-
+  <role-detail [role]="selectedRole"></role-detail>
   `
 })
 

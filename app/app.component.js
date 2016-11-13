@@ -8,13 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var RoleComponent = (function () {
-    function RoleComponent() {
-    }
-    return RoleComponent;
-}());
-exports.RoleComponent = RoleComponent;
+var core_1 = require('@angular/core');
 var ROLES = [
     { id: 1, name: 'Admin', icon: 'spy', desc: 'Description admin here', status: 'green' },
     { id: 2, name: 'User', icon: 'student', desc: 'Description user here', status: 'green' },
@@ -28,14 +22,14 @@ var AppComponent = (function () {
         console.log("Click", role);
         this.selectedRole = role;
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            template: "\n  <h1>{{title}}</h1>\n  <h3>Roles</h3>\n  <div class=\"ui cards\">\n    <div *ngFor=\"let role of roles\" (click)=onSelect(role) class=\"ui {{role.status}} link card\">\n      <div class=\"content\">\n        <div class=\"header\">\n        <h2 class=\"ui header\">\n          <i class=\"{{role.icon}} icon\"></i>\n          <div class=\"content\">\n            {{role.name}}\n          </div>\n        </h2>\n        </div>\n        <div class=\"description\">\n        {{role.desc}}\n        </div>\n      </div>\n    </div>\n  </div>\n  <role-detail [role]=\"selectedRole\"></role-detail>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: "\n  <h1>{{title}}</h1>\n  <h3>Roles</h3>\n  <div class=\"ui cards\">\n    <div *ngFor=\"let role of roles\" (click)=onSelect(role) class=\"ui {{role.status}} link card\">\n      <div class=\"content\">\n        <div class=\"header\">\n        <h2 class=\"ui header\">\n          <i class=\"{{role.icon}} icon\"></i>\n          <div class=\"content\">\n            {{role.name}}\n          </div>\n        </h2>\n        </div>\n        <div class=\"description\">\n        {{role.desc}}\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div *ngIf=\"selectedRole\">\n    <h3>Details</h3>\n    <form class=\"ui form\">\n      <div class=\"field\">\n      <label>ID: </label>\n      <input type=\"text\" [(ngModel)]=\"selectedRole.id\" name=\"id\" placeholder=\"ID\"/>\n      </div>\n      <div class=\"field\">\n      <label>Name: </label>\n      <input type=\"text\" [(ngModel)]=\"selectedRole.name\" name=\"name\" placeholder=\"Name\"/>\n      </div>\n    </form>\n  </div>\n\n  "
-    }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
