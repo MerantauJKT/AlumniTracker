@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
-import { RoleComponent } from './role';
+import { Component, OnInit } from '@angular/core';
 
-const ROLES: RoleComponent[] = [
-    { id: 1, name: 'Admin', icon: 'spy', desc: 'Description admin here', status: 'green' },
-    { id: 2, name: 'User', icon: 'student', desc: 'Description user here', status: 'green' },
-];
+import { Role } from './role';
+import { RoleService } from './role.service';
 
 @Component({
     selector: 'my-app',
@@ -29,16 +26,27 @@ const ROLES: RoleComponent[] = [
     </div>
   </div>
   <role-detail [role]="selectedRole"></role-detail>
-  `
+  `,
+  providers: [RoleService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
     title = 'Alumni Tracker';
-    roles = ROLES;
-    selectedRole: RoleComponent;
+    roles : Role[];
+    selectedRole: Role;
 
-    onSelect(role: RoleComponent): void {
+    constructor(private roleService: RoleService) {}
+
+    onSelect(role: Role): void {
         console.log("Click", role);
         this.selectedRole = role;
+    }
+
+    getRoles(): void {
+      this.roleService.getRoles().then(roles => this.roles = roles);
+    }
+
+    ngOnInit(): void{
+      this.getRoles();
     }
 }

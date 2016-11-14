@@ -1,8 +1,8 @@
 "use strict";
-var RoleComponent = (function () {
-    function RoleComponent() {
+var Role = (function () {
+    function Role() {
     }
-    return RoleComponent;
+    return Role;
 }());
-exports.RoleComponent = RoleComponent;
+exports.Role = Role;
 //# sourceMappingURL=role.js.map

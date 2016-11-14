@@ -9,25 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ROLES = [
-    { id: 1, name: 'Admin', icon: 'spy', desc: 'Description admin here', status: 'green' },
-    { id: 2, name: 'User', icon: 'student', desc: 'Description user here', status: 'green' },
-];
+var role_service_1 = require('./role.service');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(roleService) {
+        this.roleService = roleService;
         this.title = 'Alumni Tracker';
-        this.roles = ROLES;
     }
     AppComponent.prototype.onSelect = function (role) {
         console.log("Click", role);
         this.selectedRole = role;
     };
+    AppComponent.prototype.getRoles = function () {
+        var _this = this;
+        this.roleService.getRoles().then(function (roles) { return _this.roles = roles; });
+    };
+    AppComponent.prototype.ngOnInit = function () {
+        this.getRoles();
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <h1>{{title}}</h1>\n  <h3>Roles</h3>\n  <div class=\"ui cards\">\n    <div *ngFor=\"let role of roles\" (click)=onSelect(role) class=\"ui {{role.status}} link card\">\n      <div class=\"content\">\n        <div class=\"header\">\n        <h2 class=\"ui header\">\n          <i class=\"{{role.icon}} icon\"></i>\n          <div class=\"content\">\n            {{role.name}}\n          </div>\n        </h2>\n        </div>\n        <div class=\"description\">\n        {{role.desc}}\n        </div>\n      </div>\n    </div>\n  </div>\n  <role-detail [role]=\"selectedRole\"></role-detail>\n  "
+            template: "\n  <h1>{{title}}</h1>\n  <h3>Roles</h3>\n  <div class=\"ui cards\">\n    <div *ngFor=\"let role of roles\" (click)=onSelect(role) class=\"ui {{role.status}} link card\">\n      <div class=\"content\">\n        <div class=\"header\">\n        <h2 class=\"ui header\">\n          <i class=\"{{role.icon}} icon\"></i>\n          <div class=\"content\">\n            {{role.name}}\n          </div>\n        </h2>\n        </div>\n        <div class=\"description\">\n        {{role.desc}}\n        </div>\n      </div>\n    </div>\n  </div>\n  <role-detail [role]=\"selectedRole\"></role-detail>\n  ",
+            providers: [role_service_1.RoleService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [role_service_1.RoleService])
     ], AppComponent);
     return AppComponent;
 }());

@@ -1,4 +1,4 @@
-export class RoleComponent {
+export class Role {
     id: number;
     name: string;
     icon: string;
