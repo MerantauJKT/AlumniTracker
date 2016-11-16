@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RoleComponent } from './role';
+import { Role } from './role';
 
 @Component({
   selector: 'role-detail',
@@ -21,5 +21,5 @@ import { RoleComponent } from './role';
 })
 export class RoleDetailComponent {
   @Input()
-  role: RoleComponent;
+  role: Role;
 }

@@ -4,11 +4,14 @@ import { Component } from '@angular/core';
     selector: 'my-app',
     template: `
   <h1>{{title}}</h1>
-  <a routerLink="/role">Roles</a>
+  <nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/roles">Roles</a>
+  </nav>
    <router-outlet></router-outlet>
   `
 })
 
-export class AppComponent{
+export class AppComponent {
     title = 'Alumni Tracker';
 }
