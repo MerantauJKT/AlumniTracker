@@ -31,4 +31,7 @@ export class RoleDetailComponent implements OnInit {
 
   @Input()
   role: Role;
+
+  @Input()
+  action: string;
 }

@@ -14,7 +14,7 @@ import { RoleService } from './role.service';
         <div class="fluid card">
         <div class="content">
           <div class="header">
-            
+
           </div>
           <div class="description">
           </div>
@@ -50,7 +50,7 @@ import { RoleService } from './role.service';
       </div>
     </div>
     <div class="six wide column">
-      <role-detail [role]="selectedRole"></role-detail>
+      <role-detail [role]="selectedRole" [action]="actionType"></role-detail>
     </div>
   </div>
   `
@@ -59,12 +59,14 @@ import { RoleService } from './role.service';
 export class RoleComponent implements OnInit{
     roles : Role[];
     selectedRole: Role;
+    actionType: string;
 
     constructor(private roleService: RoleService) {}
 
     onSelect(role: Role): void {
         console.log("Click", role);
         this.selectedRole = role;
+        this.actionType = 'edit'
     }
 
     getRoles(): void {

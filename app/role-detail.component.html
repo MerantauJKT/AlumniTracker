@@ -1,7 +1,7 @@
 <h3>Action:</h3>
 <div *ngIf="role">
   <form class="ui form">
-    <div class="field">
+    <div *ngIf="action == 'edit'" class="field">
     <label>Id: </label>
       <div class="ui disabled input">
           <input type="text" [(ngModel)]="role.id" name="id" placeholder="ID"/>
