@@ -8,10 +8,23 @@ import { RoleService } from './role.service';
     template: `
 
   <div class="ui two column grid">
-    <div class="column">
+    <div class="ten wide column">
     <h3>List Roles</h3>
-      <div class="ui cards">
-        <div *ngFor="let role of roles" class="ui link card">
+      <div class="ui three cards">
+        <div class="fluid card">
+        <div class="content">
+          <div class="header">
+            
+          </div>
+          <div class="description">
+          </div>
+        </div>
+        <div class="ui bottom basic blue attached button">
+          <i class="add icon"></i>
+          New Role
+        </div>
+        </div>
+        <div *ngFor="let role of roles" class="fluid link card">
           <div class="content">
             <div class="header">
               <h2 class="ui header">
@@ -36,7 +49,7 @@ import { RoleService } from './role.service';
         </div>
       </div>
     </div>
-    <div class="column">
+    <div class="six wide column">
       <role-detail [role]="selectedRole"></role-detail>
     </div>
   </div>
