@@ -1,11 +1,11 @@
-<button (click)="goBack()">Back</button>
-
+<h3>Action:</h3>
 <div *ngIf="role">
-  <h3>Details</h3>
   <form class="ui form">
     <div class="field">
-    <label>ID: </label>
-    <input type="text" [(ngModel)]="role.id" name="id" placeholder="ID"/>
+    <label>Id: </label>
+      <div class="ui disabled input">
+          <input type="text" [(ngModel)]="role.id" name="id" placeholder="ID"/>
+      </div>
     </div>
     <div class="field">
     <label>Name: </label>

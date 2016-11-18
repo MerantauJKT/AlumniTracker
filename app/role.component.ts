@@ -6,25 +6,40 @@ import { RoleService } from './role.service';
 @Component({
     selector: 'my-role',
     template: `
-  <h3>Roles</h3>
-  <div class="ui cards">
-    <div *ngFor="let role of roles" (click)=onSelect(role) class="ui link card">
-      <div class="content">
-        <div class="header">
-        <h2 class="ui header">
-          <i class="{{role.icon}} icon"></i>
+
+  <div class="ui two column grid">
+    <div class="column">
+    <h3>List Roles</h3>
+      <div class="ui cards">
+        <div *ngFor="let role of roles" class="ui link card">
           <div class="content">
-            {{role.name}}
+            <div class="header">
+              <h2 class="ui header">
+                <i class="{{role.icon}} icon"></i>
+                <div class="content">
+                  {{role.name}}
+                </div>
+              </h2>
+            </div>
           </div>
-        </h2>
-        </div>
-        <div class="description">
-        {{role.desc}}
+          <div class="extra content">
+            <a class="right floated">
+              <i class="trash outline icon"></i>
+            </a>
+            <a (click)=onSelect(role) class="right floated">
+              <i class="edit icon"></i>
+            </a>
+            <a class="right floated">
+              <i class="search icon"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
+    <div class="column">
+      <role-detail [role]="selectedRole"></role-detail>
+    </div>
   </div>
-  <role-detail [role]="selectedRole"></role-detail>
   `
 })
 
