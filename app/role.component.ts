@@ -39,10 +39,10 @@ import { RoleService } from './role.service';
             <a class="right floated">
               <i class="trash outline icon"></i>
             </a>
-            <a (click)=onSelect(role) class="right floated">
+            <a (click)=onPencil(role) class="right floated">
               <i class="edit icon"></i>
             </a>
-            <a class="right floated">
+            <a (click)=onLup(role) class="right floated">
               <i class="search icon"></i>
             </a>
           </div>
@@ -63,10 +63,20 @@ export class RoleComponent implements OnInit{
 
     constructor(private roleService: RoleService) {}
 
-    onSelect(role: Role): void {
+    onLup(role: Role): void {
         console.log("Click", role);
         this.selectedRole = role;
-        this.actionType = 'edit'
+        this.actionType = "Preview";
+    }
+
+    onPencil(role: Role): void {
+      this.selectedRole = role;
+      this.actionType = "Edit";
+    }
+
+    onTrash(role: Role): void {
+      this.selectedRole = role;
+      this.actionType = "Delete";
     }
 
     getRoles(): void {

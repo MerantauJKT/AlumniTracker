@@ -1,15 +1,64 @@
-<h3>Action:</h3>
+<h3>{{action || "Action"}}:</h3>
 <div *ngIf="role">
-  <form class="ui form">
-    <div *ngIf="action == 'edit'" class="field">
-    <label>Id: </label>
-      <div class="ui disabled input">
-          <input type="text" [(ngModel)]="role.id" name="id" placeholder="ID"/>
+  <div *ngIf="action == 'Edit'">
+    <div class="ui column grid">
+      <div class="four wide column">
+        <h1 class="ui center aligned icon header">
+          <i class="{{role.icon}} icon"></i>
+        </h1>
+      </div>
+      <div class="twelve wide column">
+        <form class="ui form">
+          <div class="field">
+          <label>Id: </label>
+            <div class="ui disabled input">
+                <input type="text" [(ngModel)]="role.id" name="id" placeholder="ID"/>
+            </div>
+          </div>
+          <div class="field">
+          <label>Name: </label>
+          <input type="text" [(ngModel)]="role.name" name="name" placeholder="Name"/>
+          </div>
+          <div class="field">
+          <label>Desc: </label>
+          <textarea [(ngModel)]="role.desc" name="desc"></textarea>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="field">
-    <label>Name: </label>
-    <input type="text" [(ngModel)]="role.name" name="name" placeholder="Name"/>
+  </div>
+  <div *ngIf="action == 'Preview'">
+    <div class="ui column grid">
+      <div class="four wide column">
+        <h1 class="ui center aligned icon header">
+          <i class="{{role.icon}} icon"></i>
+        </h1>
+      </div>
+      <div class="twelve wide column">
+        <form class="ui form">
+          <div class="field">
+          <label>Id: </label>
+          <p>
+            {{role.id}}
+          </p>
+          </div>
+          <div class="field">
+          <label>Name: </label>
+          <p>
+            {{role.name}}
+          </p>
+          </div>
+          <div class="field">
+          <label>Description: </label>
+          <p>
+            {{role.desc}}
+          </p>
+          </div>
+        </form>
+      </div>
     </div>
-  </form>
+
+
+  </div>
+
 </div>
