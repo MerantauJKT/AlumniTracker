@@ -29,6 +29,10 @@ export class RoleDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.roleService.update(this.role);
+  }
+
   @Input()
   role: Role;
 

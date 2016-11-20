@@ -19,7 +19,7 @@ import { RoleService } from './role.service';
           <div class="description">
           </div>
         </div>
-        <div class="ui bottom basic blue attached button">
+        <div (click)=onAdd() class="ui bottom basic blue attached button">
           <i class="add icon"></i>
           New Role
         </div>
@@ -51,6 +51,32 @@ import { RoleService } from './role.service';
     </div>
     <div class="six wide column">
       <role-detail [role]="selectedRole" [action]="actionType"></role-detail>
+      <div *ngIf="this.actionType == 'Create'">
+        <div class="ui column grid">
+          <div class="four wide column">
+            <h1 class="ui center aligned icon header">
+              <i class="{{name.value || 'plus'}} icon"></i>
+            </h1>
+          </div>
+          <div class="twelve wide column">
+            <form class="ui form">
+              <div class="field">
+              <label>Id: </label>
+                <input type="text" #id name="id" placeholder="ID"/>
+              </div>
+              <div class="field">
+              <label>Name: </label>
+              <input type="text" #name name="name" placeholder="Name"/>
+              </div>
+              <div class="field">
+              <label>Desc: </label>
+              <textarea #desc name="desc"></textarea>
+              </div>
+            </form>
+            <button class="ui blue button" (click)="create(id.value, name.value, desc.value)">Add</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   `
@@ -79,11 +105,25 @@ export class RoleComponent implements OnInit{
       this.actionType = "Delete";
     }
 
+    onAdd(): void{
+      this.actionType = "Create";
+    }
+
     getRoles(): void {
       this.roleService.getRoles().then(roles => this.roles = roles);
     }
 
     ngOnInit(): void{
       this.getRoles();
+    }
+
+    create(id: number, name: string, desc: string): void{
+      console.log(this.roles);
+      //this.roles.push({id: id, name: name, desc: desc, icon: 'plus', status:'green'});
+      this.roleService.create({id: id, name: name, desc: desc, icon: 'plus', status:'green'})
+        .then(role => {
+          this.roles.push({id: id, name: name, desc: desc, icon: 'plus', status:'green'});
+          this.selectedRole = null;
+        })
     }
 }
