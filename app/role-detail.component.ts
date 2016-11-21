@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { Role } from './role';
 import { RoleService } from './role.service';
+import { RoleComponent } from './role.component';
 
 @Component({
   moduleId: module.id,

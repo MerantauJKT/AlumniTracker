@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="action == 'Preview'">
+  <div *ngIf="(action == 'Preview' || action == 'Delete') && role != null">
     <div class="ui column grid">
       <div class="four wide column">
         <h1 class="ui center aligned icon header">

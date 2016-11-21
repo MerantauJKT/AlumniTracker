@@ -11,6 +11,9 @@ export class RoleService {
   private rolesUrl = 'app/roles';  // URL to web api ROLES
   private headers = new Headers({'Content-Type': 'application/json'});
 
+  roles : Role[];
+  selectedRole: Role;
+
   constructor(private http: Http){}
 
   getRoles(): Promise<Role[]> {
@@ -38,6 +41,15 @@ export class RoleService {
       .post(this.rolesUrl, JSON.stringify(role), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<void>{
+    // console.log("@delete clicked", role);
+    const url = `${this.rolesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
       .catch(this.handleError);
   }
 

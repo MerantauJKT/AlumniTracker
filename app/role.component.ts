@@ -36,7 +36,7 @@ import { RoleService } from './role.service';
             </div>
           </div>
           <div class="extra content">
-            <a class="right floated">
+            <a (click)=onTrash(role) class="right floated">
               <i class="trash outline icon"></i>
             </a>
             <a (click)=onPencil(role) class="right floated">
@@ -51,6 +51,20 @@ import { RoleService } from './role.service';
     </div>
     <div class="six wide column">
       <role-detail [role]="selectedRole" [action]="actionType"></role-detail>
+      <div *ngIf="this.actionType == 'Delete' && this.selectedRole != null" class="ui tiny error icon message">
+        <i class="warning icon"></i>
+        <div class="content">
+          <div class="header">
+            Are you sure you want to delete "{{this.selectedRole.name}}"?
+          </div>
+          <p>
+            Attention: This action can't be rolled back.
+          </p>
+        </div>
+        <div class="meta">
+          <button (click)="delete(this.selectedRole)" class="ui tiny negative button">Delete</button>
+        </div>
+      </div>
       <div *ngIf="this.actionType == 'Create'">
         <div class="ui column grid">
           <div class="four wide column">
@@ -125,5 +139,17 @@ export class RoleComponent implements OnInit{
           this.roles.push({id: id, name: name, desc: desc, icon: 'plus', status:'green'});
           this.selectedRole = null;
         })
+    }
+
+    delete(role: Role): void{
+      console.log("this.roles");
+      this.roleService.delete(role.id)
+        .then(() => {
+          this.roles = this.roles.filter(r => r !== role);
+          if (this.selectedRole === role){
+            this.selectedRole = null;
+            this.actionType = "Action";
+          }
+        });
     }
 }
