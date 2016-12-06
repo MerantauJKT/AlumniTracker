@@ -8,18 +8,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: '<h1>My First Angular App</h1>'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
     return AppComponent;
 }());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'my-app',
+        template: `
+<div class="ui secondary pointing menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <a class="item">
+    Friends
+  </a>
+  <div class="right menu">
+    <a class="ui item">
+      Logout
+    </a>
+  </div>
+</div>
+<div class="ui segment">
+  <p></p>
+</div> `
+    }),
+    __metadata("design:paramtypes", [])
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
