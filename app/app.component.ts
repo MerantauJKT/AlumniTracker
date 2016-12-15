@@ -1,17 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from './user';
-const USERS: User[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
+import { UserService } from './user.service';
+
 @Component({
   selector: 'my-app',
   template: `
@@ -55,13 +45,26 @@ const USERS: User[] = [
 </div>
 </div>
 </div>
-`
+`,
+ providers: [UserService]
 })
-export class AppComponent {
+
+
+export class AppComponent implements OnInit {
   title = 'Tour of Users';
-  users = USERS;
+  users: Users[];
   selectedUser: User;
+
+  constructor(private userService: UserService) { }
+
+  getUsers(): void {
+    this.userService.getUsers().then(users => this.users = users);
+  }
+  ngOnInit(): void {
+    this.getUsers();
+  }
   onSelect(user: User): void {
     this.selectedUser = user;
   }
+
 }

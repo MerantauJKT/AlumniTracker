@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from './user';
+import { User } from './user';
 @Component({
   selector: 'my-user-detail',
   template: `

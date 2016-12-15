@@ -9,23 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var USERS = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
-];
+var user_service_1 = require("./user.service");
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(userService) {
+        this.userService = userService;
         this.title = 'Tour of Users';
-        this.users = USERS;
     }
+    AppComponent.prototype.getUsers = function () {
+        var _this = this;
+        this.userService.getUsers().then(function (users) { return _this.users = users; });
+    };
+    AppComponent.prototype.ngOnInit = function () {
+        this.getUsers();
+    };
     AppComponent.prototype.onSelect = function (user) {
         this.selectedUser = user;
     };
@@ -34,9 +30,10 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    \n<div class=\"ui grid\"> \n<div class=\"sixteen wide column\">\n<div class=\"ui secondary pointing menu\">\n  <a class=\" item\">\n    Home\n  </a>\n  <a class=\"active item\">\n    User Management\n  </a>\n  <div class=\"right menu\">\n    <a class=\"ui item\">\n      Logout\n    </a>\n  </div>\n</div>\n<div class=\"ui segment\">\n\n  <div class=\"ui grid\">\n  <div class=\"sixteen wide column\"><h1>{{title}}</h1>\n  <div class=\"ui three cards\">\n    <div *ngFor=\"let user of users\" class=\"fluid link card\" (click)=\"onSelect(user)\">\n          <div class=\"content\">\n            <div class=\"header\">\n              <h2 class=\"ui header\">\n                <i class=\"user icon\"></i>\n                <div class=\"content\">\n                  {{user.name}}\n                </div>\n              </h2>\n            </div>\n          </div>\n    </div>\n    </div>\n  <div class=\"sixteen wide column\"><my-user-detail [user]=\"selectedUser\"></my-user-detail></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n"
+        template: "\n    \n<div class=\"ui grid\"> \n<div class=\"sixteen wide column\">\n<div class=\"ui secondary pointing menu\">\n  <a class=\" item\">\n    Home\n  </a>\n  <a class=\"active item\">\n    User Management\n  </a>\n  <div class=\"right menu\">\n    <a class=\"ui item\">\n      Logout\n    </a>\n  </div>\n</div>\n<div class=\"ui segment\">\n\n  <div class=\"ui grid\">\n  <div class=\"sixteen wide column\"><h1>{{title}}</h1>\n  <div class=\"ui three cards\">\n    <div *ngFor=\"let user of users\" class=\"fluid link card\" (click)=\"onSelect(user)\">\n          <div class=\"content\">\n            <div class=\"header\">\n              <h2 class=\"ui header\">\n                <i class=\"user icon\"></i>\n                <div class=\"content\">\n                  {{user.name}}\n                </div>\n              </h2>\n            </div>\n          </div>\n    </div>\n    </div>\n  <div class=\"sixteen wide column\"><my-user-detail [user]=\"selectedUser\"></my-user-detail></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n",
+        providers: [user_service_1.UserService]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [user_service_1.UserService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
