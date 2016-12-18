@@ -18,6 +18,9 @@ import { Component } from '@angular/core';
           <a class="item" routerLink="/roles">
             Role Management
           </a>
+          <a class="ui right item" routerLink="/sign">
+            Sign In
+          </a>
         </div>
       </div>
     </div>

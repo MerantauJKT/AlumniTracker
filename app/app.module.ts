@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard.component';
 import { RoleDetailComponent } from './role-detail.component';
 import { RoleComponent } from './role.component';
 import { RoleService } from './role.service';
+import { SigninComponent } from './signin.component';
 
 
 
@@ -29,7 +30,8 @@ import { RoleService } from './role.service';
         AppComponent,
         DashboardComponent,
         RoleDetailComponent,
-        RoleComponent
+        RoleComponent,
+        SigninComponent
     ],
     providers: [
         RoleService
