@@ -8,18 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
+        this.title = 'Tour of Heroes';
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: '<h1>My First Angular App</h1>'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
     return AppComponent;
 }());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'my-app',
+        template: "\n            <div class=\"ui secondary  menu\">\n                <a class=\"item\" routerLink=\"/dashboard\">\n                    Home\n                </a>\n                <a class=\"item\">\n                    menu1\n                </a>\n                <a class=\"item\">\n                    menu2\n                </a>\n                <div class=\"right menu\">\n                    <div class=\"item\">\n                    <div class=\"ui icon input\">\n                        <input type=\"text\" placeholder=\"Search...\">\n                        <i class=\"search link icon\"></i>\n                    </div>\n                    </div>\n                    <div class=\"item\">\n                        <div class=\"ui primary button\" routerLink=\"/signup\">Sign up</div>\n                    </div>\n                </div>\n            </div>\n            <router-outlet></router-outlet>\n            "
+    }),
+    __metadata("design:paramtypes", [])
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map
